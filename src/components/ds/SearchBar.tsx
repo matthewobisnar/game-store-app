@@ -8,8 +8,8 @@ const SearchBar = () => {
             <IoSearchOutline size={`24px`}/>
         } 
         borderRadius={25}
-        bg={`#252525`}
-        border={`solid 1px black`}
+        bg={`#EDEDED`}
+        _dark={{bg: "#252525"}}
     >
         <Input 
             placeholder="Search games..." 
