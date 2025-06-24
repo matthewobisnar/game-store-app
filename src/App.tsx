@@ -1,8 +1,12 @@
 import 'normalize.css';
 import './App.css'
+import Store from './screens/Store';
 
 const App = () => {
- return <h1>Hello world</h1>
+
+ return (
+    <Store />
+ )
 }
 
 export default App;
