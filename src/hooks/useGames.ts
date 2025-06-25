@@ -1,4 +1,5 @@
 import useFetchData from './useFetchData'
+import type { GenreModel } from './useGenres';
 
 export interface PlatformModel {
     id: number;
@@ -18,6 +19,8 @@ export interface GameModel {
     metacritic: number
 }
 
-const useGames = () => useFetchData<GameModel>('/games');
+const useGames = (selectedGenre?: GenreModel | null) => useFetchData<GameModel>('/games', {
+    params: { genres: selectedGenre?.id }
+}, [selectedGenre?.id]);
 
 export default useGames

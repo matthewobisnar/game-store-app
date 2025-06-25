@@ -2,10 +2,19 @@ import ErrorBoundaryFallback from "@/components/ds/ErrorBoundaryFallback";
 import GameGenres from "@/components/ds/GameGenres";
 import GameGrid from "@/components/ds/GameGrid";
 import Navigation from "@/components/ds/Navigation";
+import type { GenreModel } from "@/hooks/useGenres";
 import { Grid, GridItem } from "@chakra-ui/react";
+import { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 const Store = () => {
+
+  const [selectedGenre, setSelectedGenre] = useState<GenreModel | null>(null);
+
+  const handleSelectedGenre = (genre: GenreModel) => {
+    setSelectedGenre(genre)
+  }
+
  return (
     <Grid
       templateAreas={{
@@ -36,7 +45,7 @@ const Store = () => {
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
           >
-            <GameGenres/>
+            <GameGenres selectedGenre={selectedGenre} onSelectGenre={handleSelectedGenre}/>
         </ErrorBoundary>
       </GridItem>
 
@@ -46,7 +55,7 @@ const Store = () => {
           <ErrorBoundary
               FallbackComponent={ErrorBoundaryFallback}
           >
-            <GameGrid/>
+            <GameGrid selectedGenre={selectedGenre}/>
           </ErrorBoundary>
       </GridItem>
 

@@ -4,6 +4,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import useGames, { type GameModel } from '@/hooks/useGames';
+import type { GenreModel } from '@/hooks/useGenres';
 
 const indices = [...Array(10).keys()];
 const gridSizeConfig = {
@@ -13,9 +14,13 @@ const gridSizeConfig = {
     xl: 4
 }
 
-const GameGrid = () => {
+interface GenreProp {
+  selectedGenre?: GenreModel | null;
+}
 
-  const { data: games, loading } = useGames();
+const GameGrid = ({ selectedGenre }: GenreProp) => {
+
+  const { data: games, loading } = useGames(selectedGenre);
 
   return (
     <>

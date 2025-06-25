@@ -1,11 +1,8 @@
-import type { PlatformModel } from "@/hooks/useFetchGames"
 import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from 'react-icons/fa';
-import { MdPhoneIphone } from 'react-icons/md'
-import { SiNintendo } from 'react-icons/si';
-import {BsGlobe} from 'react-icons/bs';
 
 import { HStack, Icon, Text } from "@chakra-ui/react"
 import type { IconType } from "react-icons/lib";
+import type { PlatformModel } from '@/hooks/useGames';
 
 const PlatformIcons = ({ platforms }: { platforms: PlatformModel[] }) => {
 
@@ -27,7 +24,13 @@ const PlatformIcons = ({ platforms }: { platforms: PlatformModel[] }) => {
     <HStack marginY={2}>
         {platforms.map(({ slug }) => (
             platformIcons[slug] && (
-            <Icon as={platformIcons[slug]} size={`md`} margin={1} color={`gray.500`}/>)
+            <Icon 
+              key={slug} 
+              as={platformIcons[slug]} 
+              size={`md`} 
+              margin={1} 
+              color={`gray.500`}
+            />)
         ))}
     </HStack>
   )

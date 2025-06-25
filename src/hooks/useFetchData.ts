@@ -1,5 +1,5 @@
 import apiClient from "@/services/api-client";
-import { CanceledError } from "axios";
+import { CanceledError, type AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { useErrorBoundary } from "react-error-boundary";
 
@@ -8,12 +8,12 @@ export interface ApiPaginatedResponse<T> {
     results: T[]
 }
 
-const useFetchData = <T,>(uri:string) => {
+const useFetchData = <T,>(uri:string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
   
     const [ data, setData ] = useState<T[]>([]);
     const [ loading, setLoading ] = useState<boolean>(false);
     const { showBoundary } = useErrorBoundary();
-  
+
     useEffect(() => {
   
       setLoading(true);
@@ -21,7 +21,8 @@ const useFetchData = <T,>(uri:string) => {
       const controller = new AbortController();
       
       apiClient.get<ApiPaginatedResponse<T>>(uri, {
-          signal: controller.signal
+          signal: controller.signal,
+          ...requestConfig
       })
       .then(response => {
           setData(response.data.results);
@@ -38,7 +39,7 @@ const useFetchData = <T,>(uri:string) => {
       
       return () => controller.abort();
   
-    }, []);
+    }, deps ? [...deps]: []);
   
     return {
       data, 
