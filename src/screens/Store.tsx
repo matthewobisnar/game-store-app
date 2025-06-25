@@ -11,15 +11,31 @@ const Store = () => {
                "sidebar  main"`
       }}         
     >
-        <GridItem area={`nav`} paddingY={`10px`}>
-            <Navigation/>
-        </GridItem>
-        <GridItem 
-            bg="yellow" 
-            area={`sidebar`}
-            display={{base: "none", lg: "block"}}
-        >sidebar</GridItem>
-        <GridItem bg="red" area={`main`}>main</GridItem>
+      <GridItem 
+        area={`nav`} 
+        paddingY={`10px`}
+      >
+        <Navigation/>
+      </GridItem>
+
+      <GridItem 
+          bg="yellow" 
+          area={`sidebar`}
+          display={{
+            base: "none", 
+            lg: "block"
+          }}
+          flexBasis={`40px`}
+      >
+        sidebar
+      </GridItem>
+
+      <GridItem 
+        bg="red" 
+        area={`main`}>
+          main
+      </GridItem>
+
     </Grid>
   )
 }
