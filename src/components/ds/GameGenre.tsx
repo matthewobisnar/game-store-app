@@ -2,7 +2,7 @@ import useGenres, { type GenreModel } from "@/hooks/useGenres";
 
 const GameGenre = () => {
 
-  const { genres, loading } = useGenres();
+  const { data: genres, loading } = useGenres();
 
   return (
     <ul>

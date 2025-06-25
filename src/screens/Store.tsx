@@ -30,7 +30,7 @@ const Store = () => {
       
       >
           <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
+            FallbackComponent={ErrorBoundaryFallback}
           >
             <GameGenre/>
         </ErrorBoundary>

@@ -1,9 +1,9 @@
 "use client";
 
-import useFetchGames, { type GameModel } from '@/hooks/useFetchGames';
 import { SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
+import useGames, { type GameModel } from '@/hooks/useGames';
 
 const gridSizeConfig = {
     sm: 1,
@@ -14,14 +14,14 @@ const gridSizeConfig = {
 
 const GameGrid = () => {
 
-  const { games, loading } = useFetchGames();
-const indices = [...Array(10).keys()];
+  const { data: games, loading } = useGames();
+  const indices = [...Array(10).keys()];
 
   return (
     <>
         <SimpleGrid columns={gridSizeConfig} gap={10} padding={`10px`}>
             {loading && (indices.map((_) => (<GameCardSkeleton key={_}/>)))}
-            {!loading && (games.map((gameItem: GameModel) => (
+            {!loading && (games?.map((gameItem: GameModel) => (
                 <GameCard key={gameItem.id} game={gameItem}/>
             )))}
         </SimpleGrid>
