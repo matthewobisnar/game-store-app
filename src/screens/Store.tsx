@@ -1,5 +1,5 @@
 import ErrorBoundaryFallback from "@/components/ds/ErrorBoundaryFallback";
-import GameGenre from "@/components/ds/GameGenre";
+import GameGenres from "@/components/ds/GameGenres";
 import GameGrid from "@/components/ds/GameGrid";
 import Navigation from "@/components/ds/Navigation";
 import { Grid, GridItem } from "@chakra-ui/react";
@@ -13,6 +13,10 @@ const Store = () => {
                "main"`,
         lg:   `"nav      nav"
                "sidebar  main"`
+      }}
+      templateColumns={{
+        base: '1fr',
+        lg: '250px 1fr'
       }}         
     >
       <GridItem 
@@ -23,16 +27,16 @@ const Store = () => {
 
       <GridItem 
           area={`sidebar`}
+          paddingX={5}
           display={{
             base: "none", 
             lg: "block"
           }}
-      
       >
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
           >
-            <GameGenre/>
+            <GameGenres/>
         </ErrorBoundary>
       </GridItem>
 

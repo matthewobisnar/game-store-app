@@ -5,6 +5,7 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import useGames, { type GameModel } from '@/hooks/useGames';
 
+const indices = [...Array(10).keys()];
 const gridSizeConfig = {
     sm: 1,
     md: 2,
@@ -15,7 +16,6 @@ const gridSizeConfig = {
 const GameGrid = () => {
 
   const { data: games, loading } = useGames();
-  const indices = [...Array(10).keys()];
 
   return (
     <>
