@@ -1,46 +1,15 @@
 "use client";
 
-import apiClient from '@/services/api-client';
-import { CanceledError } from 'axios';
-import { useEffect, useState } from 'react'
-import { useErrorBoundary } from 'react-error-boundary';
-
-interface GameModel {
-    id: number;
-    name: string
-}
-
-interface GamesPaginationModel {
-    count:number;
-    results: GameModel[]
-}
+import useFetchGames, { type GameModel } from '@/hooks/useFetchGames';
+import { Text } from '@chakra-ui/react';
 
 const GameGrid = () => {
-  
-  const [games, setGames] = useState<GameModel[]>([]);
-  const { showBoundary } = useErrorBoundary();
 
-
-  useEffect(() => {
-    
-    const controller = new AbortController();
-    
-    apiClient.get<GamesPaginationModel>('/games', {
-        signal: controller.signal
-    })
-    .then(response => setGames(response.data.results))
-    .catch(error => {
-        if (error instanceof CanceledError) return;
-
-        showBoundary(error);
-    });
-
-    
-    return () => controller.abort();
-  },[]);
+  const { games, loading } = useFetchGames();
 
   return (
     <ul>
+        {loading && <Text>Loading...</Text> }
         {games.map((gameItem: GameModel) => (
             <li key={gameItem.id}>{gameItem.name}</li>
         ))}
