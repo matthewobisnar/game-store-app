@@ -35,7 +35,7 @@ const GameGenres = ({onSelectGenre, selectedGenre}: GenreProps) => {
             >
               <HStack gap={5} justifyItems={`center`}>
                 <Image src={genre.image_background} w={`50px`} h={`40px`} borderRadius={`5px`}/>
-                <Text fontSize={`lg`}>{genre.name}</Text>
+                <Text fontWeight={selectedGenre?.id == genre.id ? `bold` : ''} fontSize={`lg`}>{genre.name}</Text>
               </HStack>
             </List.Item>
         ))}
