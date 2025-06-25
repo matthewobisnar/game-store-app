@@ -3,10 +3,25 @@ import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react'
 import { useErrorBoundary } from 'react-error-boundary';
 
+export interface PlatformModel {
+    id: number;
+    slug: string;
+    name: string;
+}
+
+export interface platformObject {
+    platform: PlatformModel;
+}
+
 export interface GameModel {
     id: number;
-    name: string
+    name: string;
+    background_image: string;
+    platforms: platformObject[];
 }
+
+
+
 
 export interface GamesPaginationModel {
     count:number;

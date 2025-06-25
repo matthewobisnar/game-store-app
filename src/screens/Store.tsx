@@ -33,7 +33,6 @@ const Store = () => {
       </GridItem>
 
       <GridItem 
-        bg="red" 
         area={`main`}
       >
           <ErrorBoundary
