@@ -18,6 +18,7 @@ export interface GameModel {
     name: string;
     background_image: string;
     platforms: platformObject[];
+    metacritic: number
 }
 
 
