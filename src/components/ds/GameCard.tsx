@@ -6,8 +6,6 @@ import GameScore from "./GameScore";
 
 const GameCard = ({ game }: { game: GameModel}) => {
 
-console.log(game.platforms.map(data => data.platform));
-
   return (
     <Card.Root 
       borderRadius={`10px`} 
