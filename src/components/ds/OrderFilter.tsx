@@ -5,9 +5,9 @@ import { BsChevronDown } from 'react-icons/bs'
 
 const orders: OrderModel[] = [
     {
-        state: "",
+        state: "-",
         value: "release",
-        label: "Release"
+        label: "Date Released"
     },
     {
         state: "",
@@ -15,9 +15,9 @@ const orders: OrderModel[] = [
         label: "Name"
     },
     {
-        state: "",
+        state: "-",
         value: "added",
-        label: "Added"
+        label: "Date Added"
     },
     {
         state: "",
@@ -25,19 +25,19 @@ const orders: OrderModel[] = [
         label: "Created"
     },
     {
-        state: "",
+        state: "-",
         value: "updated",
         label: "Updated"
     },
     {
-        state: "",
+        state: "-",
         value: "rating",
         label: "Rating"
     },
     {
-        state: "",
+        state: "-",
         value: "metacritic",
-        label: "Metacritic"
+        label: "Popularity"
     }
 ];
 
@@ -49,7 +49,7 @@ const OrderFilter = () => {
             <Menu.Root>
                 <Menu.Trigger asChild>
                   <Button variant="outline" size="lg" cursor={`pointer`}>
-                    {`Order by: ${selectedOrder ? selectedOrder?.label : null}`}
+                    {`Order by: ` + (selectedOrder ? selectedOrder?.label : '') }
                     <BsChevronDown/>
                   </Button>
               </Menu.Trigger>
