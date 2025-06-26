@@ -6,7 +6,16 @@ export interface StoreContextModel {
     selectedGenre: GenreModel | null;
     selectedPlatform: PlatformModel | null;
     handleSelectedGenre: (genre: GenreModel) => void;
-    handleSelectedPlatform: (platform: PlatformModel) => void
+    handleSelectedPlatform: (platform: PlatformModel) => void;
+    selectedOrder: OrderModel | null;
+    handleSelectedOrder: (order: OrderModel) => void;
+
+}
+
+export interface OrderModel {
+    state: string;
+    value: string,
+    label: string
 }
 
 export const StoreContext = createContext<StoreContextModel | null>(null);
@@ -15,16 +24,21 @@ const StoreContextProvider = ({ children }: {children: ReactNode}) => {
 
     const [selectedGenre, setSelectedGenre] = useState<GenreModel | null>(null);
     const [selectedPlatform, setSelectedPlatform] = useState<PlatformModel | null>(null);
+    const [selectedOrder, setSelectedOrder] = useState<OrderModel| null> (null);
 
     const handleSelectedGenre = (genre: GenreModel) => setSelectedGenre(genre);
 
     const handleSelectedPlatform = (platform: PlatformModel) => setSelectedPlatform(platform);
 
+    const handleSelectedOrder = (order: OrderModel) => setSelectedOrder(order);
+
     const contextValue = {
         selectedGenre,
         handleSelectedGenre,
         selectedPlatform,
-        handleSelectedPlatform
+        handleSelectedPlatform,
+        selectedOrder,
+        handleSelectedOrder
     }
 
   return (

@@ -1,3 +1,4 @@
+import type { OrderModel } from '@/contexts/StoreContextProvider';
 import useFetchData from './useFetchData'
 import type { GenreModel } from './useGenres';
 
@@ -21,12 +22,19 @@ export interface GameModel {
 
 const useGames = (
     selectedGenre?: GenreModel | null,
-    selectedPlatform?: PlatformModel | null
+    selectedPlatform?: PlatformModel | null,
+    selectedOrder?: OrderModel | null
 ) => useFetchData<GameModel>('/games', {
     params: { 
         genres: selectedGenre?.id,
-        parent_platforms: selectedPlatform?.id
+        parent_platforms: selectedPlatform?.id,
+        ordering: (selectedOrder?.state+""+selectedOrder?.value)
     }
-}, [selectedGenre?.id, selectedPlatform?.id]);
+}, 
+[
+    selectedGenre?.id, 
+    selectedPlatform?.id, 
+    (selectedOrder?.state+""+selectedOrder?.value)
+]);
 
 export default useGames

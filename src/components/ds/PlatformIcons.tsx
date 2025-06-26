@@ -1,6 +1,6 @@
 import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from 'react-icons/fa';
 
-import { HStack, Icon, Text } from "@chakra-ui/react"
+import { HStack, Icon } from "@chakra-ui/react"
 import type { IconType } from "react-icons/lib";
 import type { PlatformModel } from '@/hooks/useGames';
 

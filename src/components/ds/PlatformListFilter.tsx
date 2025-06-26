@@ -26,7 +26,7 @@ const PlatformListFilter = () => {
                 {platforms?.map((platform: PlatformModel) => (
                     <Menu.Item 
                       key={platform.id} 
-                      onClick={() => handleSelectedPlatform(platform)} value="new-txt">
+                      onClick={() => handleSelectedPlatform(platform)} value={platform.id.toString()}>
                         {platform.name}
                     </Menu.Item>
                 ))}            
