@@ -49,7 +49,7 @@ const OrderFilter = () => {
             <Menu.Root>
                 <Menu.Trigger asChild>
                   <Button variant="outline" size="lg" cursor={`pointer`}>
-                    {selectedOrder ? selectedOrder?.label : `Sort by` }
+                    {`Order by: ${selectedOrder ? selectedOrder?.label : null}`}
                     <BsChevronDown/>
                   </Button>
               </Menu.Trigger>
