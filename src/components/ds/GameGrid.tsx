@@ -4,7 +4,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import useGames, { type GameModel } from '@/hooks/useGames';
-import type { GenreModel } from '@/hooks/useGenres';
+import { useStoreContext } from '@/contexts/StoreContextProvider';
 
 const indices = [...Array(10).keys()];
 const gridSizeConfig = {
@@ -14,17 +14,14 @@ const gridSizeConfig = {
     xl: 4
 }
 
-interface GenreProp {
-  selectedGenre?: GenreModel | null;
-}
+const GameGrid = () => {
 
-const GameGrid = ({ selectedGenre }: GenreProp) => {
-
-  const { data: games, loading } = useGames(selectedGenre);
+  const { selectedGenre, selectedPlatform } = useStoreContext();
+  const { data: games, loading } = useGames(selectedGenre, selectedPlatform);
 
   return (
     <>
-        <SimpleGrid columns={gridSizeConfig} gap={10} padding={`10px`}>
+        <SimpleGrid columns={gridSizeConfig} gap={10}>
             {loading && (indices.map((_) => (<GameCardSkeleton key={_}/>)))}
             {!loading && (games?.map((gameItem: GameModel) => (
                 <GameCard key={gameItem.id} game={gameItem}/>

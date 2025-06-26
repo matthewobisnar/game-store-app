@@ -1,23 +1,18 @@
 import ErrorBoundaryFallback from "@/components/ds/ErrorBoundaryFallback";
+import GameFilters from "@/components/ds/GameFilters";
 import GameGenres from "@/components/ds/GameGenres";
 import GameGrid from "@/components/ds/GameGrid";
 import Navigation from "@/components/ds/Navigation";
-import type { GenreModel } from "@/hooks/useGenres";
+import StoreContextProvider from "@/contexts/StoreContextProvider";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 const Store = () => {
 
-  const [selectedGenre, setSelectedGenre] = useState<GenreModel | null>(null);
-
-  const handleSelectedGenre = (genre: GenreModel) => {
-    setSelectedGenre(genre)
-  }
-
  return (
-    <Grid
-      templateAreas={{
+
+  <StoreContextProvider>
+    <Grid templateAreas={{
         base: `"nav" 
                "main"`,
         lg:   `"nav      nav"
@@ -28,38 +23,32 @@ const Store = () => {
         lg: '250px 1fr'
       }}         
     >
-      <GridItem 
-        area={`nav`} 
-      >
+
+      <GridItem area={`nav`}>
         <Navigation/>
       </GridItem>
 
-      <GridItem 
-          area={`sidebar`}
-          paddingX={5}
-          display={{
-            base: "none", 
-            lg: "block"
-          }}
+      <GridItem area={`sidebar`} paddingX={5} display={{
+          base: "none", 
+          lg: "block"
+        }}
       >
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-          >
-            <GameGenres selectedGenre={selectedGenre} onSelectGenre={handleSelectedGenre}/>
+        <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
+          <GameGenres/>
         </ErrorBoundary>
       </GridItem>
 
-      <GridItem 
-        area={`main`}
-      >
-          <ErrorBoundary
-              FallbackComponent={ErrorBoundaryFallback}
-          >
-            <GameGrid selectedGenre={selectedGenre}/>
-          </ErrorBoundary>
+      <GridItem area={`main`} padding={`10px`} gap={`15px`} display={`grid`}>
+        <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
+          <GameFilters/>
+        </ErrorBoundary>
+        <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
+          <GameGrid/>
+        </ErrorBoundary>
       </GridItem>
 
     </Grid>
+  </StoreContextProvider>
   )
 }
 
