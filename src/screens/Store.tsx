@@ -2,6 +2,7 @@ import ErrorBoundaryFallback from "@/components/ds/ErrorBoundaryFallback";
 import GameFilters from "@/components/ds/GameFilters";
 import GameGenres from "@/components/ds/GameGenres";
 import GameGrid from "@/components/ds/GameGrid";
+import GameHeading from "@/components/ds/GameHeading";
 import Navigation from "@/components/ds/Navigation";
 import StoreContextProvider from "@/contexts/StoreContextProvider";
 import { Grid, GridItem } from "@chakra-ui/react";
@@ -40,6 +41,7 @@ const Store = () => {
 
       <GridItem area={`main`} padding={`10px`} gap={`15px`} display={`grid`}>
         <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
+          <GameHeading/>
           <GameFilters/>
         </ErrorBoundary>
         <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>

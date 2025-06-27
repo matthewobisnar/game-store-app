@@ -16,8 +16,8 @@ const gridSizeConfig = {
 
 const GameGrid = () => {
 
-  const { selectedGenre, selectedPlatform, selectedOrder } = useStoreContext();
-  const { data: games, loading } = useGames(selectedGenre, selectedPlatform, selectedOrder);
+  const { selectedGenre, selectedPlatform, selectedOrder, search } = useStoreContext();
+  const { data: games, loading } = useGames(selectedGenre, selectedPlatform, selectedOrder, search);
 
   return (
     <>

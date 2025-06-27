@@ -9,7 +9,9 @@ export interface StoreContextModel {
     handleSelectedPlatform: (platform: PlatformModel) => void;
     selectedOrder: OrderModel | null;
     handleSelectedOrder: (order: OrderModel) => void;
-
+    search: string | null;
+    handleSearch: (searchParam: string) => void;
+    handleSearchClear: () => void;
 }
 
 export interface OrderModel {
@@ -25,6 +27,7 @@ const StoreContextProvider = ({ children }: {children: ReactNode}) => {
     const [selectedGenre, setSelectedGenre] = useState<GenreModel | null>(null);
     const [selectedPlatform, setSelectedPlatform] = useState<PlatformModel | null>(null);
     const [selectedOrder, setSelectedOrder] = useState<OrderModel| null> (null);
+    const [search, setSearch] = useState<string | null>('');
 
     const handleSelectedGenre = (genre: GenreModel) => setSelectedGenre(genre);
 
@@ -32,13 +35,20 @@ const StoreContextProvider = ({ children }: {children: ReactNode}) => {
 
     const handleSelectedOrder = (order: OrderModel) => setSelectedOrder(order);
 
+    const handleSearch = (searchParam: string) => setSearch(searchParam);
+
+    const handleSearchClear = () => setSearch('');
+
     const contextValue = {
         selectedGenre,
         handleSelectedGenre,
         selectedPlatform,
         handleSelectedPlatform,
         selectedOrder,
-        handleSelectedOrder
+        handleSelectedOrder,
+        search,
+        handleSearch,
+        handleSearchClear
     }
 
   return (
