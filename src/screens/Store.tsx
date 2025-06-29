@@ -1,7 +1,8 @@
 import ErrorBoundaryFallback from "@/components/ds/ErrorBoundaryFallback";
 import GameFilters from "@/components/ds/GameFilters";
 import GameGenres from "@/components/ds/GameGenres";
-import GameGrid from "@/components/ds/GameGrid";
+import GameGridInfinite from "@/components/ds/GameGridInfinite";
+// import GameGrid from "@/components/ds/GameGrid";
 import GameHeading from "@/components/ds/GameHeading";
 import Navigation from "@/components/ds/Navigation";
 import StoreContextProvider from "@/contexts/StoreContextProvider";
@@ -45,7 +46,8 @@ const Store = () => {
           <GameFilters/>
         </ErrorBoundary>
         <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
-          <GameGrid/>
+          {/* <GameGrid/> */}
+          <GameGridInfinite/>
         </ErrorBoundary>
       </GridItem>
 
