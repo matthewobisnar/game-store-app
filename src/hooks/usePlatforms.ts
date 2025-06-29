@@ -1,4 +1,6 @@
-import useFetchData from "./useFetchData";
+import { ApiClientService } from "@/services/api-client.service";
+import { PLATFORM_API_URI } from "@/services/api-client";
+import { useQuery } from "@tanstack/react-query";
 
 export interface PlatformModel {
     id: number;
@@ -11,6 +13,16 @@ export interface PlatformModel {
     year_end: number;
 }
 
-const usePlatforms = () => useFetchData<PlatformModel>('/platforms/lists/parents');
+const apiClientService = new ApiClientService<PlatformModel>(PLATFORM_API_URI)
+
+const usePlatforms = () => {
+    return useQuery<PlatformModel[], Error>({
+        queryKey: [PLATFORM_API_URI],
+        queryFn: () => apiClientService.getAll(),
+        staleTime: 24 * 60 * 60 * 1000
+    });
+}
+    
+    // useFetchData<PlatformModel>('/platforms/lists/parents');
 
 export default usePlatforms;

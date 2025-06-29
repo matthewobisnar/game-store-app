@@ -7,15 +7,15 @@ const indices = [...Array(20).keys()];
 
 const GameGenres = () => {
 
-  const { data: genres, loading } = useGenres();
+  const { data: genres, isLoading } = useGenres();
   const { selectedGenre, handleSelectedGenre }  = useStoreContext();
 
   return (
     <List.Root listStyle={`none`}>
-        {loading && (indices.map((index) => (
+        {isLoading && (indices.map((index) => (
           <GameGenreSkeleton key={index}/>
         )))}
-        {!loading && genres?.map((genre: GenreModel) => (
+        {!isLoading && genres?.map((genre: GenreModel) => (
             <List.Item 
               backgroundColor={
                 selectedGenre?.id == genre.id ? `gray.900` : ''
