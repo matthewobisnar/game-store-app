@@ -1,6 +1,7 @@
 import { ApiClientService } from "@/services/api-client.service";
 import { PLATFORM_API_URI } from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
+import ms from "ms";
 
 export interface PlatformModel {
     id: number;
@@ -19,7 +20,7 @@ const usePlatforms = () => {
     return useQuery<PlatformModel[], Error>({
         queryKey: [PLATFORM_API_URI],
         queryFn: () => apiClientService.getAll(),
-        staleTime: 24 * 60 * 60 * 1000
+        staleTime: ms('1d')
     });
 }
     
