@@ -1,9 +1,11 @@
-import { useStoreContext } from '@/contexts/StoreContextProvider'
+import useSelectedGenreStore from '@/states/useSelectedGenreStore';
+import useSelectedPlatformStore from '@/states/useSelectedPlatformStore';
 import { Heading } from '@chakra-ui/react';
 
 const GameHeading = () => {
 
-  const { selectedGenre, selectedPlatform } = useStoreContext();
+  const selectedGenre = useSelectedGenreStore((genre) => genre.selectedGenre);
+  const selectedPlatform =  useSelectedPlatformStore((platform) => platform.selectedPlatform);
 
   return (
     <Heading 

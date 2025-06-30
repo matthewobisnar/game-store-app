@@ -16,7 +16,7 @@ export interface PlatformModel {
 
 const apiClientService = new ApiClientService<PlatformModel>(PLATFORM_API_URI)
 
-const usePlatforms = () => {
+const usePlatformsQuery = () => {
     return useQuery<PlatformModel[], Error>({
         queryKey: [PLATFORM_API_URI],
         queryFn: () => apiClientService.getAll(),
@@ -26,4 +26,4 @@ const usePlatforms = () => {
     
     // useFetchData<PlatformModel>('/platforms/lists/parents');
 
-export default usePlatforms;
+export default usePlatformsQuery;

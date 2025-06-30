@@ -1,5 +1,5 @@
-import type { GenreModel } from '@/hooks/useGenres';
-import type { PlatformModel } from '@/hooks/usePlatforms';
+import type { GenreModel } from '@/hooks/useGenresQuery';
+import type { PlatformModel } from '@/hooks/usePlatformsQuery';
 import { createContext, useContext, useState, type ReactNode } from 'react'
 
 export interface StoreContextModel {

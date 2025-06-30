@@ -1,17 +1,18 @@
-import { useStoreContext } from "@/contexts/StoreContextProvider";
-import usePlatforms, { type PlatformModel } from "@/hooks/usePlatforms";
+import usePlatformsQuery from "@/hooks/usePlatformsQuery";
+import { type PlatformModel } from "@/hooks/usePlatformsQuery";
+import useSelectedPlatformStore from "@/states/useSelectedPlatformStore";
 import { Button, Menu, Portal, Skeleton } from "@chakra-ui/react"
 import { BsChevronDown } from 'react-icons/bs';
 
 const PlatformListFilter = () => {
 
-  const { handleSelectedPlatform, selectedPlatform } = useStoreContext();
-  const {data: platforms, loading } = usePlatforms();
+  const { handleSelectedPlatform, selectedPlatform } = useSelectedPlatformStore();
+  const {data: platforms, isLoading } = usePlatformsQuery();
 
   return (
     <>
-      {loading && (<Skeleton width="132px" height="44px" borderRadius={`5px`} variant="pulse" />)}
-      {!loading && (
+      {isLoading && (<Skeleton width="132px" height="44px" borderRadius={`5px`} variant="pulse" />)}
+      {!isLoading && (
         <Menu.Root>
             <Menu.Trigger asChild>
               <Button variant="outline" size="lg">

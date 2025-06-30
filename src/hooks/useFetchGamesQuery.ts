@@ -1,14 +1,14 @@
 import { ApiClientService } from '@/services/api-client.service';
 import { useQuery } from '@tanstack/react-query';
-import type { GenreModel } from './useGenres';
-import type { PlatformModel } from './usePlatforms';
+import type { GenreModel } from './useGenresQuery';
+import type { PlatformModel } from './usePlatformsQuery';
 import type { OrderModel } from '@/contexts/StoreContextProvider';
 import { GAME_API_URI } from '@/services/api-client';
 import type { GameModel } from './useGames';
 
 const apiClientService = new ApiClientService<GameModel>(GAME_API_URI)
 
-const useFetchGames = (
+const useFetchGamesQuery = (
   selectedGenre?: GenreModel | null,
   selectedPlatform?: PlatformModel | null,
   selectedOrder?: OrderModel | null,
@@ -41,4 +41,4 @@ const useFetchGames = (
   });
 }
 
-export default useFetchGames;
+export default useFetchGamesQuery;

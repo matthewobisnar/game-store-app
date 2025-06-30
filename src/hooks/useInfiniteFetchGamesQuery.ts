@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
-import type { GenreModel } from "./useGenres"
-import type { PlatformModel } from "./usePlatforms"
+import type { GenreModel } from "./useGenresQuery"
+import type { PlatformModel } from "./usePlatformsQuery"
 import type { OrderModel } from "@/contexts/StoreContextProvider"
 import { GAME_API_URI } from "@/services/api-client"
 import { ApiClientService } from "@/services/api-client.service"
@@ -9,7 +9,7 @@ import type { GameModel } from "./useGames"
 const apiClientService = new ApiClientService<GameModel>(GAME_API_URI)
 
 
-const useInfiniteFetchGames = (
+const useInfiniteFetchGamesQuery = (
    selectedGenre?: GenreModel | null,
     selectedPlatform?: PlatformModel | null,
     selectedOrder?: OrderModel | null,
@@ -46,4 +46,4 @@ const useInfiniteFetchGames = (
   })
 }
 
-export default useInfiniteFetchGames
+export default useInfiniteFetchGamesQuery

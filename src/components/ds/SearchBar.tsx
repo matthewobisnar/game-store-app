@@ -1,14 +1,14 @@
-import { useStoreContext } from '@/contexts/StoreContextProvider';
 import { Input, InputGroup } from '@chakra-ui/react'
 import type { ChangeEvent } from 'react';
 import { IoSearchOutline } from "react-icons/io5";
 import { GrClear } from "react-icons/gr";
+import useSelectedSearchStore from '@/states/useSelectedSearchStore';
 
 
 
 const SearchBar = () => {
 
-  const { search, handleSearch, handleSearchClear } = useStoreContext();
+  const { search, handleSearch, handleSearchClear } = useSelectedSearchStore();
 
   return (
     <InputGroup 

@@ -1,4 +1,5 @@
-import { useStoreContext, type OrderModel } from '@/contexts/StoreContextProvider'
+import { type OrderModel } from '@/contexts/StoreContextProvider'
+import useSelectedOrderStore from '@/states/useSelectedOrderStore';
 import { Menu, Portal } from '@ark-ui/react'
 import { Button } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
@@ -42,7 +43,7 @@ const orders: OrderModel[] = [
 ];
 
 const OrderFilter = () => {
-    const { handleSelectedOrder, selectedOrder } = useStoreContext();
+    const { handleSelectedOrder, selectedOrder } = useSelectedOrderStore();
 
   return (
         <>

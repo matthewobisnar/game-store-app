@@ -1,6 +1,6 @@
 import type { OrderModel } from '@/contexts/StoreContextProvider';
 import useFetchData from './useFetchData'
-import type { GenreModel } from './useGenres';
+import type { GenreModel } from './useGenresQuery';
 
 export interface PlatformModel {
     id: number;

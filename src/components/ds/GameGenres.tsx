@@ -1,14 +1,15 @@
-import useGenres, { type GenreModel } from "@/hooks/useGenres";
+import { type GenreModel } from "@/hooks/useGenresQuery";
 import { HStack, Image, List, Text } from "@chakra-ui/react";
 import GameGenreSkeleton from "./GameGenreSkeleton";
-import { useStoreContext } from "@/contexts/StoreContextProvider";
+import useSelectedGenreStore from "@/states/useSelectedGenreStore";
+import useGenresQuery from "@/hooks/useGenresQuery";
 
 const indices = [...Array(20).keys()];
 
 const GameGenres = () => {
 
-  const { data: genres, isLoading } = useGenres();
-  const { selectedGenre, handleSelectedGenre }  = useStoreContext();
+  const { data: genres, isLoading } = useGenresQuery();
+  const { selectedGenre, handleSelectedGenre }  = useSelectedGenreStore();
 
   return (
     <List.Root listStyle={`none`}>

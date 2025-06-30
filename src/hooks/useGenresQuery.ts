@@ -12,7 +12,7 @@ export interface GenreModel {
 }
 
 const apiClientService = new ApiClientService<GenreModel>(GAME_GENRE_API_URI)
-const useGenres = () => {
+const useGenresQuery = () => {
     return useQuery<GenreModel[], Error>({
         queryKey: [GAME_GENRE_API_URI],
         queryFn: () => apiClientService.getAll(),
@@ -20,4 +20,4 @@ const useGenres = () => {
     })
 }
 
-export default useGenres;
+export default useGenresQuery;

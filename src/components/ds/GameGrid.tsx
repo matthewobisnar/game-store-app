@@ -4,8 +4,11 @@ import { SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import { type GameModel } from '@/hooks/useGames';
-import { useStoreContext } from '@/contexts/StoreContextProvider';
-import useFetchGames from '@/hooks/useFetchGames';
+import useSelectedGenreStore from '@/states/useSelectedGenreStore';
+import useSelectedOrderStore from '@/states/useSelectedOrderStore';
+import useSelectedPlatformStore from '@/states/useSelectedPlatformStore';
+import useSelectedSearchStore from '@/states/useSelectedSearchStore';
+import useFetchGamesQuery from '@/hooks/useFetchGamesQuery';
 
 const indices = [...Array(10).keys()];
 const gridSizeConfig = {
@@ -17,8 +20,12 @@ const gridSizeConfig = {
 
 const GameGrid = () => {
 
-  const { selectedGenre, selectedPlatform, selectedOrder, search } = useStoreContext();
-  const { data: games, isLoading }= useFetchGames(selectedGenre, selectedPlatform, selectedOrder, search);
+  const { selectedGenre } = useSelectedGenreStore();
+  const { selectedOrder } = useSelectedOrderStore();
+  const { selectedPlatform } = useSelectedPlatformStore();
+  const { search } = useSelectedSearchStore();
+
+  const { data: games, isLoading }= useFetchGamesQuery(selectedGenre, selectedPlatform, selectedOrder, search);
 
   return (
     <>

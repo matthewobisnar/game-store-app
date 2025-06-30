@@ -5,15 +5,12 @@ import GameGridInfinite from "@/components/ds/GameGridInfinite";
 // import GameGrid from "@/components/ds/GameGrid";
 import GameHeading from "@/components/ds/GameHeading";
 import Navigation from "@/components/ds/Navigation";
-import StoreContextProvider from "@/contexts/StoreContextProvider";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
 
 const Store = () => {
 
  return (
-
-  <StoreContextProvider>
     <Grid templateAreas={{
         base: `"nav" 
                "main"`,
@@ -50,9 +47,7 @@ const Store = () => {
           <GameGridInfinite/>
         </ErrorBoundary>
       </GridItem>
-
     </Grid>
-  </StoreContextProvider>
   )
 }
 
