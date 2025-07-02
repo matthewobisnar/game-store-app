@@ -1,6 +1,6 @@
 import { mountStoreDevtool } from "simple-zustand-devtools";
 import { create } from "zustand";
-import type { SearchModelStore } from "./SearchModelStore";
+import type { SearchModelStore } from "../hooks/SearchModelStore";
 
 const useSelectedSearchStore = create<SearchModelStore>(set => ({
   search: null,

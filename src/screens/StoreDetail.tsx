@@ -1,5 +1,6 @@
+import TextCollapsible from "@/components/ds/TextCollapsible";
 import useFetchGameDetail from "@/hooks/useFetchGameDetail";
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 import { useParams } from "react-router-dom"
 
 const StoreDetail = () => {
@@ -14,7 +15,7 @@ const StoreDetail = () => {
   return (
     <>
       <Heading size="5xl">{gameDetail?.name}</Heading>
-      <Text>{gameDetail?.description_raw}</Text>
+      <TextCollapsible text={gameDetail?.description_raw || ''} displayLength={300} defaultValue={true}/>
     </>
   )
 }
