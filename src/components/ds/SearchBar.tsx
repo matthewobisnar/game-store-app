@@ -3,12 +3,19 @@ import type { ChangeEvent } from 'react';
 import { IoSearchOutline } from "react-icons/io5";
 import { GrClear } from "react-icons/gr";
 import useSelectedSearchStore from '@/states/useSelectedSearchStore';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SearchBar = () => {
 
   const { search, handleSearch, handleSearchClear } = useSelectedSearchStore();
+  const navigate = useNavigate();
+
+  const handleSearchOnSubmit = (event: ChangeEvent<HTMLInputElement>) =>  {
+    handleSearch(event.target.value);
+    navigate("/");
+  }
 
   return (
     <InputGroup 
@@ -26,7 +33,7 @@ const SearchBar = () => {
             color={`#434343`}
             borderRadius="25px"
             value={search || ''}
-            onChange={(event: ChangeEvent<HTMLInputElement>) => handleSearch(event.target.value)}
+            onChange={handleSearchOnSubmit}
         />
     </InputGroup>
   )

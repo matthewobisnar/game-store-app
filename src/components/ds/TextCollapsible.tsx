@@ -11,7 +11,7 @@ const TextCollapsible = ({ text, displayLength, defaultValue = true }: {text: st
 
   return (
    <>
-    <Text>{isCollapse ? `${text.substring(0, displayLength)}...` : text}
+    <Text fontSize={`lg`}>{isCollapse ? `${text.substring(0, displayLength)}...` : text}
       <Button 
         fontWeight={`bold`} 
         size={`sm`} 
