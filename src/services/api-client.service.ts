@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from "axios";
 import apiClient from "./api-client";
-import type { ApiPaginatedResponse } from "@/hooks/useFetchData";
+import type { ApiPaginatedResponse } from "@/entities/ApiPaginatedResponse";
 
 export class ApiClientService<T> {
   private endpoint: string;

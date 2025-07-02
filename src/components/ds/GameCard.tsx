@@ -2,7 +2,7 @@ import { Card, HStack, Image } from "@chakra-ui/react"
 import PlatformIcons from "./PlatformIcons";
 import {} from 'react'
 import GameScore from "./GameScore";
-import type { GameModel } from "@/hooks/useGames";
+import type { GameModel } from '@/entities/GameModel';
 import { NoImage } from "@/configs/images";
 
 const GameCard = ({ game }: { game: GameModel}) => {

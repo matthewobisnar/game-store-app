@@ -2,7 +2,7 @@ import { Badge } from '@chakra-ui/react'
 
 const GameScore = ({ score }: { score: number }) => {
 
-    let color = (score > 75 ? 'green' : score > 60 ? `yellow` : '');
+    const color: string = (score > 75 ? 'green' : score > 60 ? `yellow` : '');
     
     return (
         <Badge 

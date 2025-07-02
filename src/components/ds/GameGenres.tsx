@@ -1,4 +1,4 @@
-import { type GenreModel } from "@/hooks/useGenresQuery";
+import { type GenreModel } from '@/entities/GenreModel';
 import { HStack, Image, List, Text } from "@chakra-ui/react";
 import GameGenreSkeleton from "./GameGenreSkeleton";
 import useSelectedGenreStore from "@/states/useSelectedGenreStore";

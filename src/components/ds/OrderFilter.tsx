@@ -1,4 +1,4 @@
-import { type OrderModel } from '@/contexts/StoreContextProvider'
+import type { OrderModel } from '@/entities/OrderModel';
 import useSelectedOrderStore from '@/states/useSelectedOrderStore';
 import { Menu, Portal } from '@ark-ui/react'
 import { Button } from '@chakra-ui/react'

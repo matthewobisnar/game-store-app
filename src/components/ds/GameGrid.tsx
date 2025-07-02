@@ -3,7 +3,7 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
-import { type GameModel } from '@/hooks/useGames';
+import { type GameModel } from '@/entities/GameModel';
 import useSelectedGenreStore from '@/states/useSelectedGenreStore';
 import useSelectedOrderStore from '@/states/useSelectedOrderStore';
 import useSelectedPlatformStore from '@/states/useSelectedPlatformStore';

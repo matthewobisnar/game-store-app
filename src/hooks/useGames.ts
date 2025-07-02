@@ -1,25 +1,8 @@
-import type { OrderModel } from '@/contexts/StoreContextProvider';
 import useFetchData from './useFetchData'
-import type { GenreModel } from './useGenresQuery';
-
-export interface PlatformModel {
-    id: number;
-    slug: string;
-    name: string;
-}
-
-export interface platformObject {
-    platform: PlatformModel;
-}
-
-export interface GameModel {
-    id: number;
-    name: string;
-    slug: string;
-    background_image: string;
-    platforms: platformObject[];
-    metacritic: number,
-}
+import type { GenreModel } from '../entities/GenreModel';
+import type { PlatformModel } from '../entities/PlatformModel';
+import type { GameModel } from '../entities/GameModel';
+import type { OrderModel } from '@/entities/OrderModel';
 
 const useGames = (
     selectedGenre?: GenreModel | null,

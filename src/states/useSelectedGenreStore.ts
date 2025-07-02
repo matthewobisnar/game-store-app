@@ -1,15 +1,10 @@
 
 
 
-import type { GenreModel } from '@/hooks/useGenresQuery';
+import type { GenreModel } from '@/entities/GenreModel';
 import { create } from 'zustand';
 import {mountStoreDevtool} from 'simple-zustand-devtools'
-
-export interface SelectedGenreStoreModel {
-  selectedGenre: GenreModel | null;
-  handleSelectedGenre: (genre: GenreModel) => void;
-}
-
+import type { SelectedGenreStoreModel } from '../entities/SelectedGenreStoreModel';
 
 const useSelectedGenreStore = create<SelectedGenreStoreModel>(set => ({
   selectedGenre: null,

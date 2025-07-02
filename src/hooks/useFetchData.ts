@@ -2,11 +2,7 @@ import apiClient from "@/services/api-client";
 import { CanceledError, type AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 import { useErrorBoundary } from "react-error-boundary";
-
-export interface ApiPaginatedResponse<T> {
-    count: number;
-    results: T[]
-}
+import type { ApiPaginatedResponse } from "../entities/ApiPaginatedResponse";
 
 const useFetchData = <T,>(uri:string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
   

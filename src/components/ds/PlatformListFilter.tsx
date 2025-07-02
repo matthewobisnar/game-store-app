@@ -1,5 +1,5 @@
 import usePlatformsQuery from "@/hooks/usePlatformsQuery";
-import { type PlatformModel } from "@/hooks/usePlatformsQuery";
+import { type PlatformModel } from "@/entities/PlatformModelV2";
 import useSelectedPlatformStore from "@/states/useSelectedPlatformStore";
 import { Button, Menu, Portal, Skeleton } from "@chakra-ui/react"
 import { BsChevronDown } from 'react-icons/bs';

@@ -2,7 +2,7 @@ import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from 'r
 
 import { HStack, Icon } from "@chakra-ui/react"
 import type { IconType } from "react-icons/lib";
-import type { PlatformModel } from '@/hooks/useGames';
+import type { PlatformModel } from '@/entities/PlatformModel';
 
 const PlatformIcons = ({ platforms }: { platforms: PlatformModel[] }) => {
 

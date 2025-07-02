@@ -1,11 +1,7 @@
-import type { OrderModel } from "@/contexts/StoreContextProvider";
 import { mountStoreDevtool } from "simple-zustand-devtools";
 import { create } from "zustand";
-
-export interface SelectedOrderStore {
-  selectedOrder: OrderModel | null;
-  handleSelectedOrder: (order: OrderModel) => void;
-}
+import type { SelectedOrderStore } from "../entities/SelectedOrderStore";
+import type { OrderModel } from "@/entities/OrderModel";
 
 const useSelectedOrderStore = create<SelectedOrderStore>(set => ({
   selectedOrder: null,

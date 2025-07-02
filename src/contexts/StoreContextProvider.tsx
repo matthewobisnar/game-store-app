@@ -1,37 +1,21 @@
-import type { GenreModel } from '@/hooks/useGenresQuery';
-import type { PlatformModel } from '@/hooks/usePlatformsQuery';
+import type { GenreModel } from '@/entities/GenreModel';
+import type { PlatformModelV2 } from "@/entities/PlatformModelV2";
 import { createContext, useContext, useState, type ReactNode } from 'react'
-
-export interface StoreContextModel {
-    selectedGenre: GenreModel | null;
-    selectedPlatform: PlatformModel | null;
-    handleSelectedGenre: (genre: GenreModel) => void;
-    handleSelectedPlatform: (platform: PlatformModel) => void;
-    selectedOrder: OrderModel | null;
-    handleSelectedOrder: (order: OrderModel) => void;
-    search: string | null;
-    handleSearch: (searchParam: string) => void;
-    handleSearchClear: () => void;
-}
-
-export interface OrderModel {
-    state: string;
-    value: string,
-    label: string
-}
+import type { OrderModel } from '@/entities/OrderModel';
+import type { StoreContextModel } from '@/entities/StoreContextModel';
 
 export const StoreContext = createContext<StoreContextModel | null>(null);
 
 const StoreContextProvider = ({ children }: {children: ReactNode}) => {
 
     const [selectedGenre, setSelectedGenre] = useState<GenreModel | null>(null);
-    const [selectedPlatform, setSelectedPlatform] = useState<PlatformModel | null>(null);
+    const [selectedPlatform, setSelectedPlatform] = useState<PlatformModelV2 | null>(null);
     const [selectedOrder, setSelectedOrder] = useState<OrderModel| null> (null);
     const [search, setSearch] = useState<string | null>('');
 
     const handleSelectedGenre = (genre: GenreModel) => setSelectedGenre(genre);
 
-    const handleSelectedPlatform = (platform: PlatformModel) => setSelectedPlatform(platform);
+    const handleSelectedPlatform = (platform: PlatformModelV2) => setSelectedPlatform(platform);
 
     const handleSelectedOrder = (order: OrderModel) => setSelectedOrder(order);
 

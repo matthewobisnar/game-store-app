@@ -1,7 +1,7 @@
 import { SimpleGrid } from '@chakra-ui/react'
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
-import type { GameModel } from '@/hooks/useGames';
+import type { GameModel } from '@/entities/GameModel';
 import { Fragment } from 'react/jsx-runtime';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useSelectedGenreStore from '@/states/useSelectedGenreStore';

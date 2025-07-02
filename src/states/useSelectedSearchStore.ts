@@ -1,11 +1,6 @@
 import { mountStoreDevtool } from "simple-zustand-devtools";
 import { create } from "zustand";
-
-export interface SearchModelStore {
-  search: string | null;
-  handleSearch: (searchParam: string) => void;
-  handleSearchClear: () => void;
-}
+import type { SearchModelStore } from "./SearchModelStore";
 
 const useSelectedSearchStore = create<SearchModelStore>(set => ({
   search: null,
