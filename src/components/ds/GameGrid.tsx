@@ -9,6 +9,7 @@ import useSelectedOrderStore from '@/states/useSelectedOrderStore';
 import useSelectedPlatformStore from '@/states/useSelectedPlatformStore';
 import useSelectedSearchStore from '@/states/useSelectedSearchStore';
 import useFetchGamesQuery from '@/hooks/useFetchGamesQuery';
+import { Link } from 'react-router-dom';
 
 const indices = [...Array(10).keys()];
 const gridSizeConfig = {
@@ -32,7 +33,9 @@ const GameGrid = () => {
         <SimpleGrid columns={gridSizeConfig} gap={10}>
             {isLoading && (indices.map((_) => (<GameCardSkeleton key={_}/>)))}
             {!isLoading && (games?.map((gameItem: GameModel) => (
+              <Link to={`/games/${gameItem.id}`}>
                 <GameCard key={gameItem.id} game={gameItem}/>
+              </Link>
             )))}
         </SimpleGrid>
     </>

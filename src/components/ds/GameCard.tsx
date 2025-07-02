@@ -17,7 +17,8 @@ const GameCard = ({ game }: { game: GameModel}) => {
         {!game.background_image && (<Image src={NoImage}/>)}
 
         <Card.Body gap="2">
-            <Card.Title fontSize={`2xl`}>{game.name}</Card.Title>
+           
+          <Card.Title fontSize={`2xl`}>{game.name}</Card.Title>
             <HStack justifyContent={`space-between`}>
               <PlatformIcons platforms={game.platforms.map((data: any) => data.platform)}/>
               <GameScore score={game.metacritic}/>

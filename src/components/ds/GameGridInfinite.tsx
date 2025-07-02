@@ -9,6 +9,7 @@ import useSelectedOrderStore from '@/states/useSelectedOrderStore';
 import useSelectedPlatformStore from '@/states/useSelectedPlatformStore';
 import useSelectedSearchStore from '@/states/useSelectedSearchStore';
 import useInfiniteFetchGamesQuery from '@/hooks/useInfiniteFetchGamesQuery';
+import { Link } from 'react-router-dom';
 
 const indices = [...Array(10).keys()];
 const gridSizeConfig = {
@@ -43,7 +44,9 @@ const GameGridInfinite = () => {
           {!isLoading && (gameGroup?.pages.map((games: GameModel[], index: number) => (
             <Fragment key={index}>
               {games.map((gameItem:GameModel) => (
-                  <GameCard key={gameItem.id} game={gameItem}/>
+                  <Link key={gameItem.id}  to={`/games/${gameItem.id}`}>
+                    <GameCard game={gameItem}/>
+                  </Link>
               ))}
             </Fragment>
           )))}
