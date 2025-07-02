@@ -6,6 +6,8 @@ export const GAME_GENRE_API_URI = '/genres';
 
 export const PLATFORM_API_URI = '/platforms/lists/parents';
 
+export const GAME_DETAIL_API_URI = GAME_API_URI;
+
 export default axios.create({
     baseURL: "https://api.rawg.io/api",
     params: {

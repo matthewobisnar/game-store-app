@@ -44,7 +44,7 @@ const GameGridInfinite = () => {
           {!isLoading && (gameGroup?.pages.map((games: GameModel[], index: number) => (
             <Fragment key={index}>
               {games.map((gameItem:GameModel) => (
-                  <Link key={gameItem.id}  to={`/games/${gameItem.id}`}>
+                  <Link key={gameItem.id}  to={`/games/${gameItem.slug}`} >
                     <GameCard game={gameItem}/>
                   </Link>
               ))}

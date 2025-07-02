@@ -1,10 +1,18 @@
+import ErrorRouteComponent from '@/components/ds/ErrorRouteComponent';
 import Layout from '@/screens/Layout';
+import Store from '@/screens/Store';
 import StoreDetail from '@/screens/StoreDetail';
-import { lazy } from 'react';
+import { Suspense, type ComponentType } from 'react';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
 
-const StoreRouteComponent = lazy(() => import('@/screens/Store'));
+const withSuspense = <T extends object,>( Component: ComponentType) => (
+  (props : T) => (
+    <Suspense fallback={<div>Loading...</div>}>
+    <Component {...props}/>
+  </Suspense>
+  )
+)
 
 const routes: RouteObject[] = [
   {
@@ -13,11 +21,15 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        Component: StoreRouteComponent
+        Component: withSuspense(Store)
       },
       {
-        path: '/games/:id',
+        path: '/games/:slug',
         Component: StoreDetail
+      },
+      {
+        path: '*',
+        Component: ErrorRouteComponent
       }
     ]
   }

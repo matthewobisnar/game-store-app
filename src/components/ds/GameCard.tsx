@@ -9,6 +9,12 @@ const GameCard = ({ game }: { game: GameModel}) => {
 
   return (
     <Card.Root 
+     _hover={{
+        transform: "scale(1.02)",
+        borderRadius:"10px",
+        overflow:"auto"
+      }}
+      transition={`transform .2s`}
       borderRadius={`10px`} 
       border={`none`} 
       overflow={`hidden`}
