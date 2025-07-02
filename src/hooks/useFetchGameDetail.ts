@@ -9,7 +9,7 @@ const apiClientService = new ApiClientService<GameDetail>(GAME_DETAIL_API_URI);
 
 const useFetchGameDetail = (slug: string) => useQuery({
   queryKey: [slug],
-  queryFn: () => apiClientService.setUri(slug).getOne(),
+  queryFn: () => apiClientService.getOne(slug),
   staleTime: ms('1 day')
 });
 

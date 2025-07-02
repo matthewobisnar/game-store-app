@@ -9,17 +9,12 @@ export class ApiClientService<T> {
     this.endpoint = endpoint;
   }
 
-  setUri(uri: string) : this {
-    this.endpoint = this.endpoint + "/" + uri;
-    return this;
-  }
-
   getAll(): Promise<T[]> {
     return apiClient.get<ApiPaginatedResponse<T>>(this.endpoint).then(response => response.data.results)
   }
 
-  getOne(): Promise<T> {
-    return apiClient.get<T>(this.endpoint).then(response => response.data)
+  getOne(uri: string): Promise<T> {
+    return apiClient.get<T>(`${this.endpoint}/${uri}`).then(response => response.data)
   }
 
   getAllWithParams(config: AxiosRequestConfig): Promise<T[]>  {
